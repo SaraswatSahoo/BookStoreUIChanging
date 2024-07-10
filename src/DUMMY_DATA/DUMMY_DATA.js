@@ -1,0 +1,68 @@
+const DUMMY_DATA = [
+  {
+    id: 'b1',
+    price: 150,
+    desc: 'Alicia Berenson’s life is seemingly perfect. A famous painter married to an in-demand fashion photographer, she lives in a grand house with big windows overlooking a park in one of London’s most desirable areas. One evening her husband Gabriel returns home late from a fashion shoot, and Alicia shoots him five times in the face, and then never speaks another word.',
+    author: 'Alex Michaelides',
+    name: 'The Silent Patient',
+    img: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1668782119i/40097951.jpg',
+  },
+  {
+    id: 'b2',
+    price: 200,
+    desc: 'No matter your goals, Atomic Habits offers a proven framework for improving—every day. James Clear, one of the worlds leading experts on habit formation, reveals practical strategies that will teach you exactly how to form good habits, break bad ones, and master the tiny behaviors that lead to remarkable results.',
+    author: 'James Clear',
+    name: 'Atomic Habits',
+    img: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1655988385i/40121378.jpg',
+  },
+  {
+    id: 'b3',
+    price: 320,
+    desc: 'From the New York Times bestselling author of We Begin at the End comes a soaring thriller and an epic love story that spans decades. A missing person mystery, a serial killer thriller, a love story, a unique twist on each, Chris Whitaker has written a novel about what lurks in the shadows of obsession, and the blinding light of hope.',
+    author: 'Chris Whitaker',
+    name: 'All the Colors of the Dark',
+    img: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1718910617i/203019740.jpg',
+  },
+  {
+    id: 'b4',
+    price: 290,
+    desc: 'Early morning, August 1975: a camp counselor discovers an empty bunk. Its occupant, Barbara Van Laar, has gone missing. Barbara isn’t just any thirteen-year-old: she’s the daughter of the family that owns the summer camp and employs most of the region’s residents. And this isn’t the first time a Van Laar child has disappeared. Barbara’s older brother similarly vanished fourteen years ago, never to be found.',
+    author: 'Liz Moore',
+    name: 'The God of the Woods',
+    img: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1717970538i/199698485.jpg',
+  },
+  {
+    id: 'b5',
+    price: 220,
+    desc: 'A mesmerising novel of two sisters on a Pacific Northwest island whose lives are upended by an unexpected visitor — a tale of family, obsession, and a mysterious creature in the woods, by the celebrated, bestselling author of Disappearing Earth.',
+    author: 'Julia Phillips',
+    name: 'Bear',
+    img: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1711433959i/196056205.jpg',
+  },
+  {
+    id: 'b6',
+    price: 130,
+    desc: 'Elizabeth Strout returns to the town of Crosby, Maine and to her beloved cast of characters—Lucy Barton, Olive Kitteridge, Bob Burgess, and more—as they deal with a shocking crime in their midst; fall in love yet choose to be apart; and grapple with the question, "What does anyone’s life mean?"',
+    author: 'Elizabeth Strout',
+    name: 'Tell Me Everything',
+    img: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1705545094i/204811915.jpg',
+  },
+  {
+    id: 'b7',
+    price: 400,
+    name: 'Sandwich',
+    desc: 'For the past two decades, Rocky has looked forward to her family’s yearly escape to Cape Cod. Their humble beach-town rental has been the site of sweet memories, sunny days, great meals, and messes of all kinds: emotional, marital, and—thanks to the cottage’s ancient plumbing—septic too.',
+    author: 'Catherine Newman',
+    img: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1699631079i/200028726.jpg',
+  },
+  {
+    id: 'b8',
+    price: 370,
+    desc: 'Julia Ames, after a youth marked by upheaval and emotional turbulence, has found herself on the placid plateau of mid-life. But Julia has never navigated the world with the equanimity of her current privileged class. Having nearly derailed herself several times, making desperate bids for the kind of connection that always felt inaccessible to her, she finally feels, at age fifty seven, that she has a firm handle on things.',
+    author: 'Claire Lombardo',
+    name: 'Same As It Ever Was',
+    img: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1701715475i/199344873.jpg',
+  },
+];
+
+export default DUMMY_DATA;
