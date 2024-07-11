@@ -22,6 +22,9 @@ export default function Navbar() {
           <Link to='/user-dashboard'>Saraswat</Link>
         </li>
         <li>
+          <Link to='/admin-dashboard'>Admin</Link>
+        </li>
+        <li>
           <Link to="/cart">Cart (0)</Link>
         </li>
       </ul>

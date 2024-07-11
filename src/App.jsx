@@ -7,6 +7,11 @@ import AllProducts from "./pages/allProducts/AllProducts";
 import Login from "./pages/registration/Login";
 import Signup from "./pages/registration/Signup";
 import UserDashBoard from "./pages/user/UserDashBoard";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AddProductPage from "./pages/admin/AddProductPage";
+import UpdateProductPage from "./pages/admin/UpdateProductPage";
+import MyState from "./context/MyState";
+import { Toaster } from "react-hot-toast";
 
 export default function App() {
 
@@ -19,9 +24,15 @@ export default function App() {
     {path:'/login', element: <Login />},
     {path:'/signup', element: <Signup />},
     {path:'/user-dashboard', element: <UserDashBoard />},
+    {path:'/admin-dashboard', element: <AdminDashboard />},
+    {path:'/addproduct', element: <AddProductPage />},
+    {path:'/updateproduct', element: <UpdateProductPage />},
   ]);
 
   return (
-    <RouterProvider router={ router }/>
+    <MyState>
+      <RouterProvider router={ router }/>
+      <Toaster />
+    </MyState>
   );
 }
