@@ -4,15 +4,18 @@ import Layout from "../../components/layout/Layout";
 export default function UserDashBoard() {
 
   const book = DUMMY_DATA[0];
+  const user = JSON.parse(localStorage.getItem("users"));
 
   return (
     <Layout>
       <div className=" flex flex-col justify-center items-start px-[100px] py-[50px]">
 
-        <div className=" h-[270px] w-full rounded-[30px] bg-[#fff49e] flex flex-col justify-center items-center">
+        <div className="w-full rounded-[30px] bg-[#fff49e] flex flex-col justify-center items-center py-[30px] space-y-1">
           <img src="https://cdn-icons-png.flaticon.com/128/2202/2202112.png" className="mb-5" />
-          <p className=" text-[20px] mb-2"><span className=" text-[20px] font-semibold">Name :</span> Saraswat Sahoo</p>
-          <p className=" text-[20px]"><span className=" text-[20px] font-semibold">Email :</span> saraswatsahoo13@gmail.com</p>
+          <p className=" text-[20px]"><span className=" text-[20px] font-semibold">Name :</span> {user?.name}</p>
+          <p className=" text-[20px]"><span className=" text-[20px] font-semibold">Email :</span> {user?.email}</p>
+          <p className=" text-[20px]"><span className=" text-[20px] font-semibold">Date :</span> {user?.date}</p>
+          <p className=" text-[20px]"><span className=" text-[20px] font-semibold">Role :</span> {user?.role}</p>
         </div>
 
         <div className=" px-[120px] w-full mb-10">
@@ -25,7 +28,7 @@ export default function UserDashBoard() {
               <p className=" text-[17px] font-semibold mb-2">Order Id</p>
               <p className=" text-[17px] mb-5 text-gray-900">#74557994327</p>
               <p className=" text-[17px] font-semibold mb-2">Date</p>
-              <p className=" text-[17px] mb-5 text-gray-900">4 March, 2023</p>
+              <p className=" text-[17px] mb-5 text-gray-900">4 July, 2024</p>
               <p className=" text-[17px] font-semibold mb-2">Total Amount</p>
               <p className=" text-[17px] mb-5 text-gray-900">₹ 84,499</p>
               <p className=" text-[17px] font-semibold mb-2">Order Status</p>

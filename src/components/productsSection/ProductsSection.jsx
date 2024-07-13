@@ -1,7 +1,13 @@
 import ProductCard from "../productCard/ProductCard";
-import DUMMY_DATA from "../../DUMMY_DATA/DUMMY_DATA";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import MyContext from "../../context/MyContext";
 
 export default function ProductsSection() {
+
+  const navigate = useNavigate();
+  const { getAllProduct } = useContext(MyContext);
+
   return (
     <>
     <div className="">
@@ -9,16 +15,17 @@ export default function ProductsSection() {
     </div>
     <div className="flex justify-center items-center">
       <div className="grid grid-cols-4 gap-20 p-20">
-        {DUMMY_DATA.map((book) => (
-          <ProductCard
-            key={book.id}
-            BookID={book.id}
-            BookImg={book.img}
-            BookTitle={book.name}
-            BookAuthor={book.author}
-            BookPrice={book.price}
+        {getAllProduct.slice(0,8).map((book, index) => {
+          const { id, bookName, bookPrice, bookImageURL } = book;
+          return <ProductCard
+            key={id}
+            BookID={id}
+            BookImg={bookImageURL}
+            BookTitle={bookName}
+            BookAuthor={'book.author'}
+            BookPrice={bookPrice}
           />
-        ))}
+        })}
       </div>
     </div>
     </>

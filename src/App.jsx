@@ -12,6 +12,8 @@ import AddProductPage from "./pages/admin/AddProductPage";
 import UpdateProductPage from "./pages/admin/UpdateProductPage";
 import MyState from "./context/MyState";
 import { Toaster } from "react-hot-toast";
+import ProtectedRouteForUser from "./protectedRoute/ProtectedRouteForUser";
+import ProtectedRouteForAdmin from "./protectedRoute/ProtectedRouteForAdmin";
 
 export default function App() {
 
@@ -23,10 +25,10 @@ export default function App() {
     {path:'/products', element: <AllProducts />},
     {path:'/login', element: <Login />},
     {path:'/signup', element: <Signup />},
-    {path:'/user-dashboard', element: <UserDashBoard />},
-    {path:'/admin-dashboard', element: <AdminDashboard />},
-    {path:'/addproduct', element: <AddProductPage />},
-    {path:'/updateproduct', element: <UpdateProductPage />},
+    {path:'/user-dashboard', element: <ProtectedRouteForUser><UserDashBoard /></ProtectedRouteForUser>},
+    {path:'/admin-dashboard', element: <ProtectedRouteForAdmin><AdminDashboard /></ProtectedRouteForAdmin>},
+    {path:'/addproduct', element: <ProtectedRouteForAdmin><AddProductPage /></ProtectedRouteForAdmin>},
+    {path:'/updateproduct/:id', element: <ProtectedRouteForAdmin><UpdateProductPage /></ProtectedRouteForAdmin>},
   ]);
 
   return (
