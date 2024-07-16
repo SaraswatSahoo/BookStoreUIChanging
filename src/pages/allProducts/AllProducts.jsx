@@ -1,8 +1,12 @@
 import Layout from '../../components/layout/Layout.jsx';
 import ProductCard from '../../components/productCard/ProductCard.jsx'
-import DUMMY_DATA from "../../DUMMY_DATA/DUMMY_DATA";
+import { useContext } from 'react';
+import MyContext from '../../context/MyContext.jsx';
 
 export default function AllProducts() {
+
+  const { getAllProduct } = useContext(MyContext);
+
   return (
     <Layout>
     <div className="">
@@ -10,14 +14,14 @@ export default function AllProducts() {
     </div>
     <div className="flex justify-center items-center">
       <div className="grid grid-cols-4 gap-20 p-20">
-        {DUMMY_DATA.map((book) => (
+        {getAllProduct.map((book,index) => (
           <ProductCard
-            key={book.id}
+            key={index}
             BookID={book.id}
-            BookImg={book.img}
-            BookTitle={book.name}
-            BookAuthor={book.author}
-            BookPrice={book.price}
+            BookImg={book.bookImageURL}
+            BookTitle={book.bookName}
+            BookAuthor={`book.author`}
+            BookPrice={book.bookPrice}
           />
         ))}
       </div>

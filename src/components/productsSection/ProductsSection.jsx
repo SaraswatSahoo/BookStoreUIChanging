@@ -5,7 +5,6 @@ import MyContext from "../../context/MyContext";
 
 export default function ProductsSection() {
 
-  const navigate = useNavigate();
   const { getAllProduct } = useContext(MyContext);
 
   return (
