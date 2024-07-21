@@ -13,6 +13,7 @@ export default function AddProductPage() {
   const [ product, setProduct ] = useState({
     bookName: "",
     bookPrice: "",
+    bookAuthor: "",
     bookImageURL: "",
     genre: "",
     description: "",
@@ -30,7 +31,7 @@ export default function AddProductPage() {
 
   async function addProductHandler(){
 
-    if( product.bookName === "" || product.bookPrice === "" || product.bookImageURL === "" || product.genre === "" || product.description === "")
+    if( product.bookName === "" || product.bookPrice === "" || product.bookImageURL === "" || product.genre === "" || product.description === "" || product.bookAuthor === "")
       return toast.error("All fields required");
 
     setLoading(true);
@@ -76,6 +77,7 @@ export default function AddProductPage() {
         <h1 className="text-[36px] font-bold text-gray-700 mb-8">Add Product</h1>
         <div className="w-full mb-8 flex flex-col gap-6">
           <input type="text" placeholder="Book Name" className={inputClass} name="bookName" value={product.bookName} onChange={handleChange}/>
+          <input type="text" placeholder="Book Author" className={inputClass} name="bookAuthor" value={product.bookAuthor} onChange={handleChange}/>
           <input type="number" placeholder="Book Price" className={inputClass} name="bookPrice" value={product.bookPrice} onChange={handleChange}/>
           <input type="text" placeholder="Book Image URL" className={inputClass} name="bookImageURL" value={product.bookImageURL} onChange={handleChange}/>
           <div className="relative w-full">

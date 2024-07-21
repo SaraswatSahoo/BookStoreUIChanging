@@ -14,6 +14,7 @@ export default function UpdateProductPage() {
   const [ product, setProduct ] = useState({
     bookName: "",
     bookPrice: "",
+    bookAuthor: "",
     bookImageURL: "",
     genre: "",
     description: "",
@@ -38,6 +39,7 @@ export default function UpdateProductPage() {
       setProduct({
         bookName: product?.bookName,
         bookPrice: product?.bookPrice,
+        bookAuthor: product?.bookAuthor,
         bookImageURL: product?.bookImageURL,
         genre: product?.genre,
         description: product?.description,
@@ -97,6 +99,7 @@ export default function UpdateProductPage() {
         <h1 className="text-[36px] font-bold text-gray-700 mb-8">Update Product</h1>
         <div className="w-full mb-8 flex flex-col gap-6">
           <input type="text" placeholder="Book Name" className={inputClass} name="bookName" value={product.bookName} onChange={handleChange}/>
+          <input type="text" placeholder="Book Author" className={inputClass} name="bookAuthor" value={product.bookAuthor} onChange={handleChange}/>
           <input type="number" placeholder="Book Price" className={inputClass} name="bookPrice" value={product.bookPrice} onChange={handleChange}/>
           <input type="text" placeholder="Book Image URL" className={inputClass} name="bookImageURL" value={product.bookImageURL} onChange={handleChange}/>
           <div className="relative w-full">

@@ -44,6 +44,7 @@ export default function ProductDetails() {
               <th className="h-12 px-6 text-md font-bold border-2 border-[#ffe300]">S.No.</th>
               <th className="h-12 px-6 text-md font-bold border-2 border-[#ffe300]">Image</th>
               <th className="h-12 px-6 text-md font-bold border-2 border-[#ffe300]">Name</th>
+              <th className="h-12 px-6 text-md font-bold border-2 border-[#ffe300]">Author</th>
               <th className="h-12 px-6 text-md font-bold border-2 border-[#ffe300]">Price</th>
               <th className="h-12 px-6 text-md font-bold border-2 border-[#ffe300]">Genre</th>
               <th className="h-12 px-6 text-md font-bold border-2 border-[#ffe300]">Date</th>
@@ -52,12 +53,13 @@ export default function ProductDetails() {
             </tr>
 
             {getAllProduct.map((item, index) => {
-              const { id, bookName, bookPrice, genre, date, bookImageURL } = item;
+              const { id, bookName, bookAuthor, bookPrice, genre, date, bookImageURL } = item;
               return (
                 <tr key={id}>
                   <td className="h-12 px-6 text-md border-2 border-[#ffe300]">{index + 1}.</td>
                   <td className="h-12 px-6 text-md border-2 border-[#ffe300] first-letter:uppercase py-2"><img src={bookImageURL} alt="" className=" h-[150px]" /></td>
                   <td className="h-12 px-6 text-md border-2 border-[#ffe300] first-letter:uppercase">{bookName}</td>
+                  <td className="h-12 px-6 text-md border-2 border-[#ffe300] first-letter:uppercase">{bookAuthor}</td>
                   <td className="h-12 px-6 text-md border-2 border-[#ffe300] first-letter:uppercase">₹ {bookPrice}</td>
                   <td className="h-12 px-6 text-md border-2 border-[#ffe300] first-letter:uppercase">{genre}</td>
                   <td className="h-12 px-6 text-md border-2 border-[#ffe300] first-letter:uppercase">{date}</td>

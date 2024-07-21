@@ -28,7 +28,7 @@ export default function ProductInfo() {
         </div>
         <div className="flex flex-col justify-center items-start w-[550px] mt-[70px]">
           <h1 className="text-[50px] font-bold mb-2">{bookInfo.bookName}</h1>
-          <p className="text-[20px] text-blue-700 text-center mb-4">{`bookInfo.author`}</p>
+          <p className="text-[20px] text-blue-700 text-center mb-4">{bookInfo.bookAuthor}</p>
           <p className="text-[40px] font-semibold mb-4">Rs. {bookInfo.bookPrice}</p>
           <p className="text-[22px] font-semibold mb-2">Description:</p>
           <p className="text-[18px] mb-10">{bookInfo.description}</p>

@@ -20,7 +20,7 @@ export default function AllProducts() {
             BookID={book.id}
             BookImg={book.bookImageURL}
             BookTitle={book.bookName}
-            BookAuthor={`book.author`}
+            BookAuthor={book.bookAuthor}
             BookPrice={book.bookPrice}
           />
         ))}
