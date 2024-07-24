@@ -1,21 +1,25 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import DUMMY_DATA from '../../DUMMY_DATA/DUMMY_DATA'
 import { useNavigate } from "react-router-dom";
+import MyContext from "../../context/MyContext";
 
 export default function SearchBar() {
 
   const [ search, setSearch ]=useState("");
   const navigate = useNavigate();
+  const { getAllProduct } = useContext(MyContext);
 
   function navigateHandler(ID){
     navigate(`/${ID}`);
+    setSearch("");
   }
 
   function searchBookHandler(event){
     setSearch(event.target.value.toLowerCase());
   }
 
-  const searchedBook = DUMMY_DATA.filter((book) => book.name.toLowerCase().includes(search)).slice(0,8);
+
+  const searchedBook = getAllProduct.filter((book) => book.bookName.toLowerCase().includes(search)).slice(0,8);
 
   return (
     <>
@@ -32,8 +36,8 @@ export default function SearchBar() {
               {searchedBook.map((book) => {
                 return(
                   <div onClick={() => {navigateHandler(book.id)}} className=" flex gap-3 text-[25px] items-center p-2 cursor-pointer">
-                    <img src={book.img} alt="" className="w-10"/>
-                    {book.name}
+                    <img src={book.bookImageURL} alt="" className="w-10"/>
+                    {book.bookName}
                   </div>
                 ) 
               })}

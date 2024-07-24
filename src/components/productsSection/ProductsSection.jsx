@@ -15,14 +15,15 @@ export default function ProductsSection() {
   
   function addCart(item){
     dispatch(addToCart(item));
+    console.log(item);
     toast.success("Add to Cart");
   }
 
   function removeCart(item){
     dispatch(deleteFromCart(item));
+    console.log(item);
     toast.success("Delete from Cart");
-  }
-
+  } 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cartItems));
   },[cartItems]);
@@ -34,20 +35,19 @@ export default function ProductsSection() {
     </div>
     <div className="flex justify-center items-center">
       <div className="grid grid-cols-4 gap-20 p-20">
-        {getAllProduct.slice(0,8).map((book) => {
-          const { id, bookName, bookPrice, bookImageURL } = book;
-          const { time, date, ...restData } = book;
+        {getAllProduct && getAllProduct.slice(0,8).map((book) => {
+          const { time, date, ...restData} = book;
           return <ProductCard
-            key={id}
-            BookID={id}
-            BookImg={bookImageURL}
-            BookTitle={bookName}
+            key={book.id}
+            BookID={book.id}
+            BookImg={book.bookImageURL}
+            BookTitle={book.bookName}
             BookAuthor={book.bookAuthor}
-            BookPrice={bookPrice}
+            BookPrice={book.bookPrice}
             BookButton={
-              cartItems.some((p)=>p.id === id) ?
+              cartItems.some((p)=>p.id === book.id) ?
               <button
-                onClick={()=>removeCart(restData)}
+                onClick={()=>removeCart(book.id)}
                 className="w-full border text-white bg-black px-8 py-3 hover:bg-white hover:text-black hover:border-black text-lg rounded-lg transition duration-300">
                   Remove From Cart
               </button> :
