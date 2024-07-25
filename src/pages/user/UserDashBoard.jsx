@@ -1,10 +1,14 @@
+import { useContext } from "react";
 import DUMMY_DATA from "../../DUMMY_DATA/DUMMY_DATA";
 import Layout from "../../components/layout/Layout";
+import MyContext from "../../context/MyContext";
+import Loader from "../../components/loader/Loader";
 
 export default function UserDashBoard() {
 
   const book = DUMMY_DATA[0];
   const user = JSON.parse(localStorage.getItem("users"));
+  const { loading, getAllOrder } = useContext(MyContext);
 
   return (
     <Layout>
@@ -22,33 +26,45 @@ export default function UserDashBoard() {
 
           <h1 className="text-4xl font-semibold mt-10 mb-8">Order Details</h1>
 
-          <div className=" h-[380px] w-full rounded-[30px] border-[#ffe300] border-2 flex">
+            {loading && <Loader />}
 
-            <div className=" h-full w-[400px] bg-[#fff49e] border-[#ffe300] border-r-2 rounded-l-[30px] flex flex-col justify-center items-start px-[60px]">
-              <p className=" text-[17px] font-semibold mb-2">Order Id</p>
-              <p className=" text-[17px] mb-5 text-gray-900">#74557994327</p>
-              <p className=" text-[17px] font-semibold mb-2">Date</p>
-              <p className=" text-[17px] mb-5 text-gray-900">4 July, 2024</p>
-              <p className=" text-[17px] font-semibold mb-2">Total Amount</p>
-              <p className=" text-[17px] mb-5 text-gray-900">₹ 84,499</p>
-              <p className=" text-[17px] font-semibold mb-2">Order Status</p>
-              <p className=" text-[17px] mb-5 text-green-800">Confirmed</p>
-            </div>
+            {getAllOrder.filter((obj) => obj.userid === user?.uid).map((order, index) => {
+              return(
+                <div key={index}>
+                  {order.cartItems.map((item, index) => {
+                    const { id, bookAuthor, bookImageURL, bookName, bookPrice, genre, quantity } = item;
+                    const { status } = order;
+                    return (
+                      <div className=" h-[380px] w-full rounded-[30px] border-[#ffe300] border-2 flex mb-[20px]">
+                        <div className=" h-full w-[400px] bg-[#fff49e] border-[#ffe300] border-r-2 rounded-l-[30px] flex flex-col justify-center items-start px-[60px]">
+                          <p className=" text-[17px] font-semibold mb-2">Order Id</p>
+                          <p className=" text-[17px] mb-5 text-gray-900">#{id}</p>
+                          <p className=" text-[17px] font-semibold mb-2">Date</p>
+                          <p className=" text-[17px] mb-5 text-gray-900">4 July, 2024</p>
+                          <p className=" text-[17px] font-semibold mb-2">Total Amount</p>
+                          <p className=" text-[17px] mb-5 text-gray-900">₹ {bookPrice * quantity}</p>
+                          <p className=" text-[17px] font-semibold mb-2">Order Status</p>
+                          <p className=" text-[17px] mb-5 text-green-800">{status}</p>
+                        </div>
 
-            <div className=" h-full w-full p-[30px] flex justify-start items-start">
-              <img src={book.img} alt={book.name} className=" h-[120px] rounded-lg"/>
-              <div className="ml-8 mt-2 w-full">
-                <p className="text-[17px] font-semibold">{book.name}</p>
-                <p className="text-[17px] text-blue-500 mb-5">{book.author}</p>
-                <p className="text-gray-700 text-[17px]">x 1</p>
-              </div>
-              <p className="w-[100px] p-[20px] text-[18px] font-semibold">₹ {book.price}</p>
-            </div>
+                        <div className=" h-full w-full p-[30px] flex justify-start items-start">
+                          <img src={bookImageURL} alt={bookName} className=" h-[250px] rounded-lg"/>
+                          <div className="ml-8 mt-2 w-full">
+                            <p className="text-[25px] font-semibold">{bookName}</p>
+                            <p className="text-[20px] text-blue-500 mb-5">{bookAuthor}</p>
+                            <p className="text-gray-700 text-[20px]">x {quantity}</p>
+                          </div>
+                          <p className="w-[150px] p-[20px] text-[25px] font-semibold">₹ {bookPrice}</p>
+                        </div>
+                      </div>
+                    )
+                  })}
+                </div>
+              )
+            })}
 
           </div>
         </div>
-
-      </div>
     </Layout>
   )
 }

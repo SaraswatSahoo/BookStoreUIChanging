@@ -1,10 +1,13 @@
 import { Trash } from "lucide-react";
-import DUMMY_DATA from "../../DUMMY_DATA/DUMMY_DATA";
 import Layout from "../../components/layout/Layout";
 import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import { deleteFromCart, incrementQuantity, decrementQuantity } from "../../redux/cartSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import BuyNowModal from "../../components/buyNowModal/BuyNowModal";
+import { Timestamp, addDoc, collection } from "firebase/firestore";
+import { fireDB } from "../../firebase/FirebaseConfig";
+import { Navigate } from "react-router-dom";
 
 export default function Cart() {
 
@@ -31,9 +34,67 @@ export default function Cart() {
     localStorage.setItem('cart', JSON.stringify(cartItems));
   }, [cartItems])
 
+  const user = JSON.parse(localStorage.getItem('users'));
+
+  const [addressInfo, setAddressInfo] = useState({
+    name: "",
+    address: "",
+    pincode: "",
+    mobileNumber: "",
+    time: Timestamp.now(),
+    date: new Date().toLocaleString(
+      'en-US',
+      {
+        month: "short",
+        day: "2-digit",
+        year: "numeric",
+      }
+    )
+  });
+
+  function buyNow(){
+
+    if(addressInfo.name === "" || addressInfo.address === "" ||addressInfo.pincode === "" || addressInfo.mobileNumber === ""){
+      return toast.error("All fields are required");
+    }
+
+    const orderInfo = {
+      cartItems,
+      addressInfo,
+      email: user.email,
+      userid: user.uid,
+      status: "confirmed",
+      time: Timestamp.now(),
+      date: new Date().toLocaleString(
+        "en-US",
+        {
+            month: "short",
+            day: "2-digit",
+            year: "numeric",
+        }
+      )
+    }
+
+    try {
+      const orderRef = collection(fireDB, 'order');
+      addDoc(orderRef, orderInfo);
+      setAddressInfo({
+        name: "",
+        address: "",
+        pincode: "",
+        mobileNumber: "",
+      })
+      toast.success("Order Placed Successfully");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  
+
   return (
     <Layout>
-      <div className="flex justify-around items-start px-4">
+      <div className="flex justify-around items-start px-4 my-10">
 
         <div className="flex flex-col justify-center items-start w-full max-w-4xl">
           <h1 className="text-4xl font-semibold mt-10 mb-[70px]">Shopping Cart</h1>
@@ -82,7 +143,9 @@ export default function Cart() {
             <p>Total Amount</p>
             <p>₹ {cartTotalPrice}</p>
           </div>
-          <button className="w-full border text-white bg-black px-8 py-3 hover:bg-white hover:text-black hover:border-black text-lg font-semibold rounded-lg transition duration-300">Buy Now</button>
+          {
+            user ? <BuyNowModal addressInfo={addressInfo} setAddressInfo={setAddressInfo} buyNow={buyNow}/> : <Navigate to={'/login'}/>
+          }
         </div>
       </div>
     </Layout>
