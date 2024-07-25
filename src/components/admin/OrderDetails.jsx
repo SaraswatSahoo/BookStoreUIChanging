@@ -3,7 +3,7 @@ import MyContext from "../../context/MyContext"
 
 export default function OrderDetails() {
 
-  const { getAllOrder } = useContext(MyContext);
+  const { getAllOrder, deleteProduct } = useContext(MyContext);
 
   return (
     <div>
@@ -43,7 +43,7 @@ export default function OrderDetails() {
                       return (
                         <tr key={index}>
                           <td className="h-12 px-6 text-md border-2 border-[#ffe300]">{index + 1}.</td>
-                          <td className="h-12 px-6 text-md border-2 border-[#ffe300] first-letter:uppercase ">{id}</td>
+                          <td className="h-12 px-6 text-md border-2 border-[#ffe300] first-letter:uppercase ">{order.id}</td>
                           <td className="h-12 px-6 text-md border-2 border-[#ffe300] first-letter:uppercase "><img src={bookImageURL} alt={bookName} /></td>
                           <td className="h-12 px-6 text-md border-2 border-[#ffe300] first-letter:uppercase ">{bookName}</td>
                           <td className="h-12 px-6 text-md border-2 border-[#ffe300] first-letter:uppercase ">{genre}</td>
@@ -57,7 +57,7 @@ export default function OrderDetails() {
                           <td className="h-12 px-6 text-md border-2 border-[#ffe300] first-letter:uppercase ">{order.addressInfo.mobileNumber}</td>
                           <td className="h-12 px-6 text-md border-2 border-[#ffe300] first-letter:uppercase ">{order.email}</td>
                           <td className="h-12 px-6 text-md border-2 border-[#ffe300] first-letter:uppercase ">{order.date}</td>
-                          <td className="h-12 px-6 text-md border-2 border-[#ffe300] text-red-500 cursor-pointer hover:underline">Delete</td>
+                          <td className="h-12 px-6 text-md border-2 border-[#ffe300] text-red-500 cursor-pointer hover:underline" onClick={()=>deleteProduct(order.id)}>Delete</td>
                         </tr>
                       )
                     })}

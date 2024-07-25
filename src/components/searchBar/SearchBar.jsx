@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import DUMMY_DATA from '../../DUMMY_DATA/DUMMY_DATA'
 import { useNavigate } from "react-router-dom";
 import MyContext from "../../context/MyContext";
 

@@ -9,7 +9,7 @@ import MyContext from "../../context/MyContext";
 export default function AdminDashboard() {
 
   const user = JSON.parse(localStorage.getItem("users"));
-  const { getAllProduct, getAllOrder } = useContext(MyContext);
+  const { getAllProduct, getAllOrder, getAllUser } = useContext(MyContext);
 
   const classTab = "flex flex-col justify-center items-center py-[20px] bg-[#fff49e] w-full rounded-[20px] border-[#ffe300] border-[3px] mb-[20px] hover:bg-[#ffeb54] transition duration-300";
 
@@ -42,7 +42,7 @@ export default function AdminDashboard() {
           </Tab>
           <Tab className={classTab}>
           <Users size={48} />
-            <h1 className="text-[30px] mt-[15px]">10</h1>
+            <h1 className="text-[30px] mt-[15px]">{getAllUser.length}</h1>
             <h1 className="text-[16px] font-semibold ">Total Users</h1>
           </Tab>
         </TabList>

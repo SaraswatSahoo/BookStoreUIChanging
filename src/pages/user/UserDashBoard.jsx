@@ -1,12 +1,10 @@
 import { useContext } from "react";
-import DUMMY_DATA from "../../DUMMY_DATA/DUMMY_DATA";
 import Layout from "../../components/layout/Layout";
 import MyContext from "../../context/MyContext";
 import Loader from "../../components/loader/Loader";
 
 export default function UserDashBoard() {
-
-  const book = DUMMY_DATA[0];
+  
   const user = JSON.parse(localStorage.getItem("users"));
   const { loading, getAllOrder } = useContext(MyContext);
 

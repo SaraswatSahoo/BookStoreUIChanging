@@ -9,6 +9,7 @@ export default function MyState({children}) {
   const [loading, setLoading] = useState(false);
   const [getAllProduct, setGetAllProduct] = useState([]);
   const [getAllOrder, setGetAllOrder] = useState([]);
+  const [getAllUser, setGetAllUser] = useState([]);
 
   async function getAllProductHandler() {
 
@@ -72,13 +73,36 @@ export default function MyState({children}) {
     }
   }
 
+  async function getAllUserHandler(){
+    setLoading(true);
+    try {
+      const q = query(
+        collection(fireDB, 'user'),
+        orderBy('time')
+      );
+      const data = onSnapshot(q, (QuerySnapshot) => {
+        let userArray = [];
+        QuerySnapshot.forEach((doc) => {
+          userArray.push({ ...doc.data(), id: doc.id});
+        });
+        setGetAllUser(userArray);
+        setLoading(false);
+      });
+      return () => data;
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  }
+
   useEffect(() => {
     getAllProductHandler();
     getAllOrdersHandler();
+    getAllUserHandler();
   }, []);
 
   return (
-    <MyContext.Provider value={{ loading, setLoading, getAllProduct, getAllProductHandler, getAllOrder }}>
+    <MyContext.Provider value={{ loading, setLoading, getAllProduct, getAllProductHandler, getAllOrder, deleteProduct, getAllUser }}>
       {children}
     </MyContext.Provider>
   )
