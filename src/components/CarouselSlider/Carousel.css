@@ -1,0 +1,37 @@
+
+.carousel-container {
+  width: 80%;
+  margin: auto;
+  position: relative; /* Ensure proper positioning for alignment */
+}
+
+.slide {
+  transition: transform 0.5s ease;
+  padding: 0 15px; /* Padding around each slide */
+}
+
+.slick-slide {
+  margin: 0 10px; /* Margin between slides */
+}
+
+.slick-slide img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Remove any default margin or padding applied by slick-carousel */
+.slick-list {
+  margin: 0;
+  padding: 0;
+}
+
+.slick-track {
+  display: flex;
+  align-items: center; /* Ensure slides are centered */
+}
+
+.slick-slide {
+  display: flex;
+  align-items: center; /* Center slides vertically if needed */
+}

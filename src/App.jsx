@@ -1,5 +1,4 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./pages/home/Home";
 import NoPage from "./pages/noPage/NoPage";
 import ProductInfo from "./pages/productInfo/ProductInfo";
 import Cart from "./pages/cart/Cart";
@@ -14,11 +13,12 @@ import MyState from "./context/MyState";
 import { Toaster } from "react-hot-toast";
 import ProtectedRouteForUser from "./protectedRoute/ProtectedRouteForUser";
 import ProtectedRouteForAdmin from "./protectedRoute/ProtectedRouteForAdmin";
+import HomeLandingPage from "./pages/HomeLandingPage/HomeLandingPage";
 
 export default function App() {
 
   const router = createBrowserRouter ([
-    {path: '/', element: <Home />},
+    {path: '/', element: <HomeLandingPage />},
     {path:'/*', element: <NoPage />},
     {path:'/:ID', element: <ProductInfo />},
     {path:'/cart', element: <Cart />},

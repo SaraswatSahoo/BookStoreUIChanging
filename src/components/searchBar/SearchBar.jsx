@@ -32,9 +32,9 @@ export default function SearchBar() {
         <div className=" flex justify-center">
           {search && <div className=" bg-gray-200 w-[870px] my-1 rounded-[10px] p-2 absolute">
             {searchedBook.length > 0 ? <div className=" px-2 py-2">
-              {searchedBook.map((book) => {
+              {searchedBook.map((book,index) => {
                 return(
-                  <div onClick={() => {navigateHandler(book.id)}} className=" flex gap-3 text-[25px] items-center p-2 cursor-pointer">
+                  <div key={index} onClick={() => {navigateHandler(book.id)}} className=" flex gap-3 text-[25px] items-center p-2 cursor-pointer">
                     <img src={book.bookImageURL} alt="" className="w-10"/>
                     {book.bookName}
                   </div>
