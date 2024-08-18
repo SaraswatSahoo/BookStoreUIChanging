@@ -10,6 +10,13 @@
   padding: 0 15px; /* Padding around each slide */
 }
 
+@media (max-width: 640px) {
+  .slide {
+    padding: 0 1px; /* Padding around each slide */
+  }
+  
+}
+
 .slick-slide {
   margin: 0 10px; /* Margin between slides */
 }

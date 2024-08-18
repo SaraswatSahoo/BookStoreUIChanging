@@ -1,10 +1,17 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function ProtectedRouteForAdmin({children}) {
-  const user = JSON.parse(localStorage.getItem("users"));
+export default function ProtectedRouteForAdmin({ children }) {
   const navigate = useNavigate();
-  if(user?.role === "admin")
-    return children ;
-  else
-    navigate('/login');
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (user?.role !== "admin") {
+      navigate('/login');
+    }
+  }, [navigate]);
+
+  // Render nothing if the condition is not met and navigation is in progress
+  return children;
 }

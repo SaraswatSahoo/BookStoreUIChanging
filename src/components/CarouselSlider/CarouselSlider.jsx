@@ -24,6 +24,14 @@ export default function Carousel() {
     autoplaySpeed: 0,
     centerPadding: '0px',
     arrows: false,
+    responsive: [
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 3,
+        },
+      }
+    ],
   };
 
   return (
